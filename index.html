@@ -32,12 +32,13 @@
     <script>
         // Firebase設定
         const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
+            apiKey: "AIzaSyC5oWm3HtYNY4Q5HtHUgyi5WWFM-uITWAs",
+            authDomain: "votes-ef7ad.firebaseapp.com",
+            projectId: "votes-ef7ad",
+            storageBucket: "votes-ef7ad.appspot.com",
+            messagingSenderId: "830476642984",
+            appId: "1:830476642984:web:331e25f345029ee840b09d",
+            measurementId: "G-2MDK9D4Z3C"
         };
 
         // Firebase初期化
@@ -52,6 +53,8 @@
                     projects.push({ id: doc.id, ...doc.data() });
                 });
                 renderProjects(projects);
+            }).catch((error) => {
+                console.error("Error getting documents: ", error);
             });
         }
 
@@ -77,6 +80,8 @@
                 votes: firebase.firestore.FieldValue.increment(1)
             }).then(() => {
                 getProjects();
+            }).catch((error) => {
+                console.error("Error updating document: ", error);
             });
         }
 
